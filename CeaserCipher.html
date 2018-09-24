@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Caesar Cipher</title>
+<style>
+body
+{
+background-image: linear-gradient(to right, red , yellow);
+}
+.C
+{
+word-spacing:2em;
+text-indent:150px;
+}
+.B
+{
+font-weight:bold;
+font-size:50px;
+line-height:40pt;
+}
+.A
+{
+font-weight:bold;
+font-size:30px;
+line-height:40pt;
+}
+</style>
+<script type = "text/javascript">
+function encryption()
+{
+var alphabet="abcdefghijklmnopqrstuvwxyz";
+var i;
+var ct=" ";
+var key=parseInt(f1.t3.value);
+for(i=0;i<f1.t1.value.length;i++)
+{
+if(f1.t1.value.charAt(i)==" ")
+{
+  i=i+1;
+}
+var pos=alphabet.indexOf(f1.t1.value.charAt(i));
+f1.t9.value=f1.t9.value+pos+" ";
+var k=(pos+key)%26;
+f1.t10.value=f1.t10.value+(pos+key)+" ";
+f1.t7.value=f1.t7.value+k+" ";
+var ctl=alphabet.charAt(k);
+ct=ct+ctl;
+}
+f1.t2.value=ct;
+}
+function decryption()
+{
+var alphabet="abcdefghijklmnopqrstuvwxyz";
+var i;
+var pt=" ";
+var key=parseInt(f1.t6.value);
+for(i=0;i<f1.t4.value.length;i++)
+{
+if(f1.t4.value.charAt(i)==" ")
+{
+  i=i+1;
+}
+var pos=alphabet.indexOf(f1.t4.value.charAt(i));
+f1.t11.value=f1.t11.value+pos+" ";
+var k=(pos-key)%26;
+f1.t12.value=f1.t12.value+(pos-key)+" ";
+if(k<0)
+{
+k=k+26;
+}
+f1.t8.value=f1.t8.value+k+" ";
+var ctl=alphabet.charAt(k);
+pt=pt+ctl;
+}
+f1.t5.value=pt;
+}
+</script>
+</head>
+<body>
+<center>
+<p class="B">CAESAR CIPHER</p>
+<form name="f1">
+<table class="A">
+<h1><u>ENCRYPTION</u></h1>
+<tr><td>Plain text</td><td><input type="text" name="t1" size=25></td></tr>
+<tr><td>Key</td><td><input type="text" name="t3" size=25></td></tr>
+<tr><td>Plain text text in number</td><td><input type="text" name="t9" size=25></td></tr>
+<tr><td>Before mod(P+k)</td><td><input type="text" name="t10" size=25></td></tr>
+<tr><td>Cipher text in number</td><td><input type="text" name="t7" size=25></td></tr>
+<tr><td>Cipher text</td><td><input type="text" name="t2" size=25></td></tr>
+<tr><td><input type="button" onclick="encryption()" value="ENCRYPT"></td></tr>
+<tr><td><p class="C"><u>DECRYPTION</u></p></td></tr>
+<tr><td>Cipher text</td><td><input type="text" name="t4" size=25></td></tr>
+<tr><td>Key</td><td><input type="text" name="t6" size=25></td></tr>
+<tr><td>Cipher text text in number</td><td><input type="text" name="t11" size=25></td></tr>
+<tr><td>Before mod(C-K)</td><td><input type="text" name="t12" size=25></td></tr>
+<tr><td>Plain text in number</td><td><input type="text" name="t8" size=25></td></tr>
+<tr><td>Plain text</td><td><input type="text" name="t5" size=25></td></tr>
+<tr><td><input type="button" onclick="decryption()" value="DECRYPT"></td></tr>
+</table>
+</form>
+<center>
+</body>
+</html>
